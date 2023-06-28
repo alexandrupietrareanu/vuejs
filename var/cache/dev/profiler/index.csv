@@ -1,0 +1,7 @@
+a24b72,::1,GET,https://localhost:8000/,1687945156,,200
+e8dc83,::1,GET,https://localhost:8000/favicon.ico,1687945156,107ce0,404
+107ce0,::1,GET,https://localhost:8000/favicon.ico,1687945156,,404
+7e9fe8,::1,GET,https://localhost:8000/,1687945158,,200
+c1465a,::1,GET,https://localhost:8000/,1687945158,,200
+50681f,::1,GET,https://localhost:8000/api,1687945449,,200
+612085,::1,GET,https://localhost:8000/api/products?page=1,1687945461,,200
