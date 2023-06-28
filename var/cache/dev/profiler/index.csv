@@ -5,3 +5,13 @@ e8dc83,::1,GET,https://localhost:8000/favicon.ico,1687945156,107ce0,404
 c1465a,::1,GET,https://localhost:8000/,1687945158,,200
 50681f,::1,GET,https://localhost:8000/api,1687945449,,200
 612085,::1,GET,https://localhost:8000/api/products?page=1,1687945461,,200
+2214b8,::1,GET,https://localhost:8000/,1687948141,,200
+608927,::1,GET,https://localhost:8000/,1687948147,,200
+f85c2d,::1,GET,https://localhost:8000/,1687951045,,200
+816ec6,::1,GET,https://localhost:8000/,1687951046,,200
+2c2d1b,::1,GET,https://localhost:8000/,1687951058,,200
+b459da,::1,GET,https://localhost:8000/,1687951058,,200
+b97240,::1,GET,https://localhost:8000/,1687951058,,200
+6f0138,::1,GET,https://localhost:8000/,1687951059,,200
+a25d0e,::1,GET,https://localhost:8000/,1687951145,,200
+fc15f4,::1,GET,https://localhost:8000/,1687951148,,200
