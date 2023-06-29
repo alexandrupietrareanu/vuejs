@@ -1,4 +1,5 @@
-var Encore = require('@symfony/webpack-encore');
+const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -35,6 +36,11 @@ Encore
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
 
+    .addAliases({
+        '@': path.resolve(__dirname, 'assets', 'js'),
+        styles: path.resolve(__dirname, 'assets', 'scss'),
+    })
+
     /*
      * FEATURE CONFIG
      *
@@ -65,19 +71,31 @@ Encore
     .enableSassLoader()
     .enableVueLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    // gives better modules CSS naming in dev
+    .configureCssLoader((config) => {
+        if (!Encore.isProduction() && config.modules) {
+            config.modules.localIdentName = '[name]_[local]_[hash:base64:5]';
+        }
+    })
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
+// uncomment if you use TypeScript
+//.enableTypeScriptLoader()
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+// uncomment to get integrity="..." attributes on your script & link tags
+// requires WebpackEncoreBundle 1.4 or higher
+//.enableIntegrityHashes(Encore.isProduction())
 
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+// uncomment if you're having problems with a jQuery plugin
+//.autoProvidejQuery()
+
+// uncomment if you use API Platform Admin (composer req api-admin)
+//.enableReactPreset()
+//.addEntry('admin', './assets/js/admin.js')
+// eslint-disable-next-line semi-style
 ;
+
+if (!Encore.isProduction()) {
+    Encore.disableCssExtraction();
+}
 
 module.exports = Encore.getWebpackConfig();
