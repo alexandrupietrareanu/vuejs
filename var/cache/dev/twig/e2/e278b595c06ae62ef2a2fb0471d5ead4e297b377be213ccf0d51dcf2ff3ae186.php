@@ -92,8 +92,26 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 
+    <script>
+        ";
+        // line 11
+        if (array_key_exists("currentCategoryId", $context)) {
+            // line 12
+            echo "            window.currentCategoryId = '";
+            echo twig_escape_filter($this->env, twig_escape_filter($this->env, (isset($context["currentCategoryId"]) || array_key_exists("currentCategoryId", $context) ? $context["currentCategoryId"] : (function () { throw new RuntimeError('Variable "currentCategoryId" does not exist.', 12, $this->source); })()), "js"), "html", null, true);
+            echo "';
+        ";
+        } else {
+            // line 14
+            echo "            window.currentCategoryId = null;
+        ";
+        }
+        // line 16
+        echo "
+    </script>
+
     ";
-        // line 10
+        // line 19
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("products");
         echo "
 ";
@@ -105,7 +123,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     }
 
-    // line 13
+    // line 22
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -115,13 +133,13 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 14
+        // line 23
         echo "    ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
 
     ";
-        // line 16
+        // line 25
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("products");
         echo "
 ";
@@ -145,7 +163,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     public function getDebugInfo()
     {
-        return array (  125 => 16,  119 => 14,  109 => 13,  97 => 10,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  143 => 25,  137 => 23,  127 => 22,  115 => 19,  110 => 16,  106 => 14,  100 => 12,  98 => 11,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -158,6 +176,15 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
 {% block javascripts %}
     {{ parent() }}
+
+    <script>
+        {% if currentCategoryId is defined %}
+            window.currentCategoryId = '{{ currentCategoryId|e('js') }}';
+        {% else %}
+            window.currentCategoryId = null;
+        {% endif %}
+
+    </script>
 
     {{ encore_entry_script_tags('products') }}
 {% endblock %}
