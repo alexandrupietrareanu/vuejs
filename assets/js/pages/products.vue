@@ -4,7 +4,7 @@
             <aside :class="asideClass">
                 <sidebar
                     :collapsed="sidebarCollapsed"
-                    :current-category-id="getCurrentCategoryId"
+                    :current-category-id="currentCategoryId"
                     @toggle-collapsed="toggleSidebarCollapsed"
                 />
             </aside>
