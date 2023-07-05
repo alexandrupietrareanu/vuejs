@@ -8,7 +8,10 @@
             </div>
         </div>
 
-        <product-list :products="products" />
+        <product-list
+            :products="products"
+            :loading="loading"
+        />
 
         <div class="row">
             <legend-component :title="legend" />
@@ -17,7 +20,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { fetchProducts } from '@/services/products-service';
 import LegendComponent from '@/components/legend';
 import ProductList from '@/components/product-list';
 
@@ -36,18 +39,21 @@ export default {
     data() {
         return {
             products: [],
+            loading: false,
             legend: 'Shipping takes 10-20 weeks, and products probably won\'t work, pasl.',
         };
     },
     async created() {
-        const params = {};
-        if (this.currentCategoryId) {
-            params.category = this.currentCategoryId;
-        }
+        this.loading = true;
 
-        const response = await axios.get('/api/products', {
-            params,
-        });
+        let response;
+        try {
+            response = await fetchProducts(this.currentCategoryId);
+            this.loading = false;
+        } catch (e) {
+            this.loading = false;
+            return;
+        }
 
         this.products = response.data['hydra:member'];
     },
