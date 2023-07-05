@@ -108,10 +108,14 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         }
         // line 16
         echo "
+        window.categories = ";
+        // line 17
+        echo $this->extensions['App\Twig\SerializerExtension']->serializeToJsonLd((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 17, $this->source); })()));
+        echo ";
     </script>
 
     ";
-        // line 19
+        // line 20
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("products");
         echo "
 ";
@@ -123,7 +127,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     }
 
-    // line 22
+    // line 23
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -133,13 +137,13 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 23
+        // line 24
         echo "    ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
 
     ";
-        // line 25
+        // line 26
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("products");
         echo "
 ";
@@ -163,7 +167,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     public function getDebugInfo()
     {
-        return array (  143 => 25,  137 => 23,  127 => 22,  115 => 19,  110 => 16,  106 => 14,  100 => 12,  98 => 11,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  147 => 26,  141 => 24,  131 => 23,  119 => 20,  113 => 17,  110 => 16,  106 => 14,  100 => 12,  98 => 11,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -184,6 +188,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
             window.currentCategoryId = null;
         {% endif %}
 
+        window.categories = {{ categories|jsonld }};
     </script>
 
     {{ encore_entry_script_tags('products') }}

@@ -2,17 +2,17 @@
   "entrypoints": {
     "app": {
       "js": [
-        "https://localhost:8080/build/runtime.js",
-        "https://localhost:8080/build/vendors~_tmp_copy~app~products.js",
-        "https://localhost:8080/build/app.js"
+        "http://localhost:8080/build/runtime.js",
+        "http://localhost:8080/build/vendors~_tmp_copy~app~products.js",
+        "http://localhost:8080/build/app.js"
       ]
     },
     "products": {
       "js": [
-        "https://localhost:8080/build/runtime.js",
-        "https://localhost:8080/build/vendors~_tmp_copy~app~products.js",
-        "https://localhost:8080/build/vendors~products.js",
-        "https://localhost:8080/build/products.js"
+        "http://localhost:8080/build/runtime.js",
+        "http://localhost:8080/build/vendors~_tmp_copy~app~products.js",
+        "http://localhost:8080/build/vendors~products.js",
+        "http://localhost:8080/build/products.js"
       ]
     }
   }
