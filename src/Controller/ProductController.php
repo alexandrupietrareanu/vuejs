@@ -15,6 +15,7 @@ class ProductController extends AbstractController
 {
     public function __construct(
         private readonly CategoryRepository $categoryRepository,
+        private readonly IriConverterInterface $iriConverter,
     )
     {
     }
@@ -32,10 +33,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/category/{id}", name="app_category")
      */
-    public function showCategory(Category $category, IriConverterInterface $iriConverter): Response
+    public function showCategory(Category $category): Response
     {
         return $this->render('product/index.html.twig', [
-            'currentCategoryId' => $iriConverter->getIriFromItem($category),
+            'currentCategoryId' => $this->iriConverter->getIriFromItem($category),
             'categories' => $this->categoryRepository->findAll(),
         ]);
     }
@@ -45,6 +46,10 @@ class ProductController extends AbstractController
      */
     public function showProduct(Product $product): Response
     {
-        return $this->render('product/index.html.twig');
+        return $this->render('product/index.html.twig', [
+            'currentCategoryId' => $this->iriConverter->getIriFromItem($product->getCategory()),
+            'currentProductId' => $this->iriConverter->getIriFromItem($product),
+            'categories' => $this->categoryRepository->findAll(),
+        ]);
     }
 }

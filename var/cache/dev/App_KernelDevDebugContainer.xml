@@ -488,6 +488,7 @@
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <argument type="service" id="App\Repository\CategoryRepository"/>
+      <argument type="service" id="api_platform.iri_converter"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.0QcI221.App\Controller\ProductController"/>
       </call>
@@ -5752,11 +5753,10 @@
         <argument key="purchase" type="service" id=".errored..service_locator.zyBLZ55.App\Entity\Purchase"/>
       </argument>
     </service>
-    <service id=".service_locator.dAzaB.S" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Y3LSOb_" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="category" type="service" id=".errored..service_locator.dAzaB.S.App\Entity\Category"/>
-        <argument key="iriConverter" type="service" id="api_platform.iri_converter"/>
+        <argument key="category" type="service" id=".errored..service_locator.Y3LSOb_.App\Entity\Category"/>
       </argument>
     </service>
     <service id=".service_locator.yp0dQu_" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5779,11 +5779,11 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.Dkj7qXI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.q8tvYsW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CheckoutController::confirmation" type="service" id=".service_locator.zyBLZ55"/>
-        <argument key="App\Controller\ProductController::showCategory" type="service" id=".service_locator.dAzaB.S"/>
+        <argument key="App\Controller\ProductController::showCategory" type="service" id=".service_locator.Y3LSOb_"/>
         <argument key="App\Controller\ProductController::showProduct" type="service" id=".service_locator.yp0dQu_"/>
         <argument key="App\Controller\RegistrationController::register" type="service" id=".service_locator.LeCcMXp"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.Tvd7vqW"/>
@@ -5791,7 +5791,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.7F3oxVY"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.Bv1nHN9"/>
         <argument key="App\Controller\CheckoutController:confirmation" type="service" id=".service_locator.zyBLZ55"/>
-        <argument key="App\Controller\ProductController:showCategory" type="service" id=".service_locator.dAzaB.S"/>
+        <argument key="App\Controller\ProductController:showCategory" type="service" id=".service_locator.Y3LSOb_"/>
         <argument key="App\Controller\ProductController:showProduct" type="service" id=".service_locator.yp0dQu_"/>
         <argument key="App\Controller\RegistrationController:register" type="service" id=".service_locator.LeCcMXp"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.Tvd7vqW"/>
@@ -6250,12 +6250,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.Dkj7qXI"/>
+      <argument type="service" id=".service_locator.q8tvYsW"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.Dkj7qXI"/>
+      <argument type="service" id=".service_locator.q8tvYsW"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -6297,7 +6297,7 @@
     <service id=".errored..service_locator.Bv1nHN9.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.7F3oxVY.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.zyBLZ55.App\Entity\Purchase" class="App\Entity\Purchase"/>
-    <service id=".errored..service_locator.dAzaB.S.App\Entity\Category" class="App\Entity\Category"/>
+    <service id=".errored..service_locator.Y3LSOb_.App\Entity\Category" class="App\Entity\Category"/>
     <service id=".errored..service_locator.yp0dQu_.App\Entity\Product" class="App\Entity\Product"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
@@ -6769,7 +6769,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Dkj7qXI"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.q8tvYsW"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

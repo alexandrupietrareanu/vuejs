@@ -11,9 +11,9 @@
             </aside>
 
             <div :class="contentClass">
-                <catalog
-                    :current-category-id="currentCategoryId"
-                    :categories="categories"
+                <component
+                    :is="currentComponent"
+                    v-bind="currentProps"
                 />
             </div>
         </div>
@@ -23,13 +23,15 @@
 <script>
 import Catalog from '@/components/catalog';
 import Sidebar from '@/components/sidebar';
-import { getCurrentCategoryId } from '@/services/page-context';
+import ProductShow from '@/components/product-show';
+import { getCurrentCategoryId, getCurrentProductId } from '@/services/page-context';
 import { fetchCategories } from '@/services/categories-service';
 
 export default {
     name: 'Products',
     components: {
         Catalog,
+        ProductShow,
         Sidebar,
     },
     data() {
@@ -45,6 +47,20 @@ export default {
         },
         contentClass() {
             return this.sidebarCollapsed ? 'col-xs-12 col-11' : 'col-xs-12 col-9';
+        },
+        currentProductId() {
+            return getCurrentProductId();
+        },
+        currentComponent() {
+            return this.currentProductId !== null ? ProductShow : Catalog;
+        },
+        currentProps() {
+            return this.currentProductId !== null ? {
+                productId: this.currentProductId,
+            } : {
+                currentCategoryId: this.currentCategoryId,
+                categories: this.categories,
+            };
         },
     },
     async created() {

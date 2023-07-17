@@ -108,14 +108,29 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         }
         // line 16
         echo "
-        window.categories = ";
+        ";
         // line 17
-        echo $this->extensions['App\Twig\SerializerExtension']->serializeToJsonLd((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 17, $this->source); })()));
+        if (array_key_exists("currentProductId", $context)) {
+            // line 18
+            echo "        window.currentProductId = '";
+            echo twig_escape_filter($this->env, twig_escape_filter($this->env, (isset($context["currentProductId"]) || array_key_exists("currentProductId", $context) ? $context["currentProductId"] : (function () { throw new RuntimeError('Variable "currentProductId" does not exist.', 18, $this->source); })()), "js"), "html", null, true);
+            echo "';
+        ";
+        } else {
+            // line 20
+            echo "        window.currentProductId = null;
+        ";
+        }
+        // line 22
+        echo "
+        window.categories = ";
+        // line 23
+        echo $this->extensions['App\Twig\SerializerExtension']->serializeToJsonLd((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 23, $this->source); })()));
         echo ";
     </script>
 
     ";
-        // line 20
+        // line 26
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("products");
         echo "
 ";
@@ -127,7 +142,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     }
 
-    // line 23
+    // line 29
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -137,13 +152,13 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 24
+        // line 30
         echo "    ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
 
     ";
-        // line 26
+        // line 32
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("products");
         echo "
 ";
@@ -167,7 +182,7 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
 
     public function getDebugInfo()
     {
-        return array (  147 => 26,  141 => 24,  131 => 23,  119 => 20,  113 => 17,  110 => 16,  106 => 14,  100 => 12,  98 => 11,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  162 => 32,  156 => 30,  146 => 29,  134 => 26,  128 => 23,  125 => 22,  121 => 20,  115 => 18,  113 => 17,  110 => 16,  106 => 14,  100 => 12,  98 => 11,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -186,6 +201,12 @@ class __TwigTemplate_8bf32bbee76e92469f7d280cf032b7f947b346388d389866022a637adaf
             window.currentCategoryId = '{{ currentCategoryId|e('js') }}';
         {% else %}
             window.currentCategoryId = null;
+        {% endif %}
+
+        {% if currentProductId is defined %}
+        window.currentProductId = '{{ currentProductId|e('js') }}';
+        {% else %}
+        window.currentProductId = null;
         {% endif %}
 
         window.categories = {{ categories|jsonld }};
